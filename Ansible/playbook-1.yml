@@ -1,0 +1,30 @@
+- hosts: all
+  order: sorted
+  become: yes
+  become_method: su
+
+  tasks:
+
+    - name: Install Htop
+      apt:
+        name: htop=2.0
+
+    - name: Install Tshark
+      apt:
+        name: tshark
+        state: latest
+
+    - name: Install Resolvconf
+      apt:
+        name: resolvconf
+        state: latest
+
+    - name: Install Tcpdump
+      apt:
+        name: tcpdump
+        state: latest
+
+    - name: Upgrade Apt & Update Apt Cache
+      apt:
+        update_cache: yes
+        upgrade: safe
